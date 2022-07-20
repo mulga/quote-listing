@@ -1,0 +1,30 @@
+/* CSS for zitat.html */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.card {
+  height: 250px;
+  overflow: hidden;
+}

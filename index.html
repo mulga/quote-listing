@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- Vuejs v3-->
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <title>Quotes Hausafgabe</title>
+  </head>
+  <body>
+    <section class="header" id="myapp">
+      <div class="container bg-light p-4">
+        <h1 class="mb-5 mt-5 text-center">{{message}}</h1>
+
+        <!-- search name -->
+        <div class="row gap-2 mb-2 justify-content-center">
+          <div class="row col-md-10">
+            <input
+              v-model="searchValue"
+              type="search"
+              placeholder="Write a name..."
+              class="form-control"
+            />
+          </div>
+          <div class="row col-md-2 gap-2">
+            <button @click="getByName" class="btn btn-primary">
+              Search name
+            </button>
+          </div>
+        </div>
+
+        <!-- search index -->
+
+        <div class="row gap-2 mb-2 justify-content-center">
+          <div class="row col-md-10">
+            <input
+              v-model="searchIndex"
+              type="search"
+              placeholder="Write an Index number"
+              class="form-control"
+            />
+          </div>
+          <div class="row col-md-2 gap-2">
+            <button @click="getByIndex" class="btn btn-primary">
+              Search Index
+            </button>
+          </div>
+        </div>
+
+        <!-- delete index -->
+
+        <div class="row gap-2 justify-content-center">
+          <div class="row col-md-10">
+            <input
+              v-model="delIndex"
+              type="text"
+              placeholder="Write an index number to delete"
+              class="form-control"
+            />
+          </div>
+
+          <div class="row col-md-2 gap-2">
+            <button @click="delUser" class="btn btn-danger">Del</button>
+          </div>
+        </div>
+
+        <!-- search display -->
+
+        <div class="row alert alert-info mt-3" v-for="f in searchItem ">
+          <span class="badge bg-primary float-start w-auto">{{f.name}}</span>
+          <p class="p-0">{{f.quote}}</p>
+        </div>
+        <!-- search display -->
+
+        <div class="row alert alert-info mt-3">
+          <span class="badge bg-primary float-start w-auto"
+            >{{displayName}}</span
+          >
+          <p class="p-0">{{displayQuote}}</p>
+        </div>
+
+        <!-- add your quote begins -->
+
+        <div class="row gap-2">
+          <h5>Add your quote</h5>
+
+          <input
+            v-model="newAuthor"
+            type="text"
+            placeholder="Write author"
+            class="form-control"
+          />
+
+          <textarea
+            v-model="newQuote"
+            class="form-control"
+            placeholder="Write quote"
+            id="floatingTextarea2"
+          ></textarea>
+
+          <div class="row col-md-2">
+            <button @click="addNewQuote" class="btn btn-success">Add</button>
+          </div>
+        </div>
+
+        <!-- add your quote ends -->
+
+        <!-- quote listing -->
+
+        <div class="row mt-2">
+          <h4 class="mt-3 mb-3">
+            The quotes of the day
+
+            <span class="badge bg-info fs-6 fw-normal">
+              Total quotes {{this.myQuotes.length}}
+            </span>
+          </h4>
+          <ol class="list-group list-group-numbered">
+            <li
+              v-for=" q in filteredList"
+              class="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">{{q.name}}</div>
+                {{q.quote}}
+              </div>
+            </li>
+          </ol>
+        </div>
+        <!-- deleted listing -->
+
+        <!-- <div class="row mt-2">
+          <h4 class="mt-3 mb-3">Deleted quotes</h4>
+          <p v-if="deletedQ.length <= 0">You haven't deleted anything yet</p>
+          <ol class="list-group list-group-numbered">
+            <li
+              v-for=" itemDel in deletedQ"
+              class="list-group-item d-flex justify-content-between align-items-start"
+            >
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">{{itemDel.name}}</div>
+                {{itemDel.quote}}
+              </div>
+            </li>
+          </ol>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Bootstrap Js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="main.js"></script>
+  </body>
+</html>
